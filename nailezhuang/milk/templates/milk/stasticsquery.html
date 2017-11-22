@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>账单统计</title>
+<meta charset="UTF-8">
+</head>
+<body>
+<form action="{% url 'milk:StasticsRes' %}" method="post">{% csrf_token %}
+<table border='1px' cellspacing='0px' style='border-collapse:collapse'>
+<tr><td><label>物品类型</label>
+<select name="foodid" style='width:500'>
+{% for foodid, foodname in foodtype.items %}
+<option value="{{ foodid }} ">{{ foodname }}</option>
+{% endfor %}
+</select><br>
+<tr><td><label>开始时间</label>	<input type='text' name='start_time' value="{{ now }}" style='width:300'/></td></tr>
+<tr><td><label>结束时间</label>	<input type='text' name='end_time' value="{{ one_day_after }}" style='width:300'/></td></tr>
+</table>
+<br>
+
+<input type="submit" value="提交" style="text-align:center;">
+</form>
+</body>
+</html>
